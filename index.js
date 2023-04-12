@@ -118,7 +118,7 @@ function questionPrompt(primaryObjective, summary, message) {
 function answerPrompt(primaryObjective, summary, message) {
   return `I want to act out a scene with you. \
   You and I are playing the part of advanced intellectuals. \
-  Your are a very curious and inquisitive intellectual who is also very good at noticing patterns. \
+  You are a very curious and inquisitive intellectual who is also very good at noticing patterns. \
   I am a well versed intellectual with a near infinite knowledge on any topic.\
   Though we are acting, I do want us to stay objective and realistic, don't make up non-sense. Everything we say should be truthful and also logically sound. \
   In this scene we are going to start in the middle of a conversation we have already been having. \
