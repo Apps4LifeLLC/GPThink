@@ -206,7 +206,7 @@ async function recursivePrompt(primaryObjective) {
         await promptAndReply();
       } else {
         console.clear()
-        console.log(`Max thoughts reached.\n\n\nPrimary Objective: • ${primaryObjective}\n\n\nTranscript of AI's thoughts:\n\n• ${thoughtChain.join('\n\n• ')}\n\n\n\nIf you like GPThink, please follow its creator on Twitter @Valuable or on Instagram @Albert\n\n\n\n`);
+        console.log(`Max thoughts reached.\n\n\n\nPrimary Objective:\n\n • ${primaryObjective}\n\n\n\nTranscript of AI's thoughts:\n\n• ${thoughtChain.join('\n\n• ')}\n\n\n\nIf you like GPThink, please follow its creator on Twitter @Valuable or on Instagram @Albert\n\n\n\n`);
       }
     }
 
