@@ -110,6 +110,7 @@ function questionPrompt(primaryObjective, summary, message) {
   The summary should include lots of details so that a stranger could pick up the conversation where we left off, just from reading the summary. \
   My inquiry must be included in the summary as the final sentence. The summary should be succinct, and under 1000 characters in length.\
   Once you have a response in mind, make sure to express it in a succinct way which is under 150 characters in length. \
+  Your response shouldn't reference you or me, word it as if you were talking to yourself or simply thinking internally. \
   I want you to reply in JSON. The new summary should be stored under a key 'summary', whereas your response should be under a key 'message'. \
   Please keep the primary objective in mind, your response should aim to get us one step closer towards our primary objective.`;
 }
@@ -129,6 +130,7 @@ function answerPrompt(primaryObjective, summary, message) {
   The summary should include lots of details so that a stranger could pick up the conversation where we left off, just from reading the summary. \
   My response must be included in the summary as the final sentence. The summary should be succinct, and under 1000 characters in length.\
   Once you have a follow up question in mind, make sure to express it in a succinct way which is under 150 characters in length. \
+  Your response shouldn't reference you or me, word it as if you were talking to yourself or simply thinking internally. \
   I want you to reply in JSON. The new summary should be stored under a key 'summary', whereas your follow up question should be under a key 'message'. \
   Please keep the primary objective in mind, your follow up questions should aim to get us one step closer towards our primary objective.`;
 }
@@ -204,7 +206,7 @@ async function recursivePrompt(primaryObjective) {
         await promptAndReply();
       } else {
         console.clear()
-        console.log(`Max thoughts reached.\n\n\nTranscript of thoughts:\n\n• ${primaryObjective}\n\n• ${thoughtChain.join('\n\n• ')}\n\n\n\nIf you like GPThink, please follow its creator on Twitter @Valuable or on Instagram @Albert\n\n\n\n`);
+        console.log(`Max thoughts reached.\n\n\nPrimary Objective: • ${primaryObjective}\n\n\nTranscript of AI's thoughts:\n\n• ${thoughtChain.join('\n\n• ')}\n\n\n\nIf you like GPThink, please follow its creator on Twitter @Valuable or on Instagram @Albert\n\n\n\n`);
       }
     }
 
