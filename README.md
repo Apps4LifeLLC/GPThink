@@ -9,3 +9,6 @@ To use:
 4) Edit index.js and add your openAI API key under the configured variables section.
 5) Run the command in CLI: `node index.js`
 6) Enjoy!
+
+If you enjoy GPThink please follow me on Twitter: [@Valuable](https://twitter.com/valuable) or on Instagram: [@Albert](https://instagram.com/albert)
+
