@@ -1,6 +1,10 @@
 # GPThink
 A recursive self-feedback loop flopping between the role of "questioner" and "answerer" to create a dialogue of self-propagating thought on any topic.
 
+
+-----------
+
+
 To use:
 
 1) Save index.js to a folder.
@@ -12,3 +16,10 @@ To use:
 
 If you enjoy GPThink please follow me on Twitter: [@Valuable](https://twitter.com/valuable) or on Instagram: [@Albert](https://instagram.com/albert)
 
+
+-----------
+
+
+Example **GPThink**ing:
+
+![Screenshot 2023-04-12 at 4 09 02 PM](https://user-images.githubusercontent.com/6188727/231573068-ae296eec-b121-4629-a448-bdff6e1f70aa.png)
