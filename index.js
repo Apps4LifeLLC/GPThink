@@ -17,7 +17,7 @@ const fs = require('fs');
 const API_KEY = "";//Your openAI API key here (alternatively this can be set, securely, in a .env file under 'API_KEY=______')
 const gptModel = "gpt-3.5-turbo";
 
-const maxThoughts = 2;
+const maxThoughts = 10;
 const thoughtRateLimit = 1;//seconds
 const errorRetryDelay = 10;//seconds
 const maxConsecutiveErrorsAllowed = 10;
@@ -167,7 +167,7 @@ async function recursivePrompt(primaryObjective) {
           thoughtChain.push(message);
 
           console.clear()
-          console.log(`Current Thought (${thoughts} of ${maxThoughts}): ${message}\n\n\nSummary of Thoughts: ${summary}`);
+          console.log(`Current Thought (${thoughts} of ${maxThoughts}): ${message}\n\n\nSummary of Thoughts: ${summary}\n\n\n\nIf you're enjoying this, please follow the creator of GPThink:\n• Twitter: @Valuable\n• Instagram: @Albert`);
 
           if (role === "question") {
             role = "answer";
@@ -187,6 +187,7 @@ async function recursivePrompt(primaryObjective) {
         }
       } catch (error) {
         console.log(`Error, trying again in ${errorRetryDelay} seconds`);
+        console.error("\n\n\nError: ", error);
         failureCount++;
 
         if (failureCount >= maxConsecutiveErrorsAllowed) {
