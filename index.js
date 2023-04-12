@@ -202,7 +202,7 @@ async function recursivePrompt(primaryObjective) {
     }
 
     if (success) {
-      if (thoughts < maxThoughts) {
+      if (thoughts <= maxThoughts) {
         await promptAndReply();
       } else {
         console.clear()
