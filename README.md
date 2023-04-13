@@ -22,4 +22,5 @@ If you enjoy GPThink please follow me on Twitter: [@Valuable](https://twitter.co
 
 Example **GPThink**ing:
 
-![Screenshot 2023-04-12 at 4 09 02 PM](https://user-images.githubusercontent.com/6188727/231573068-ae296eec-b121-4629-a448-bdff6e1f70aa.png)
+![Screenshot 2023-04-13 at 3 59 49 PM](https://user-images.githubusercontent.com/6188727/231871046-9bca0838-8ac4-4565-9ba1-6d6d81d9e9f6.png)
+
