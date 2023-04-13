@@ -157,7 +157,7 @@ async function recursivePrompt(primaryObjective) {
         }
       } catch (error) {
         console.log(`Error, trying again in ${errorRetryDelay} seconds`);
-        console.error("\n\n\nError: ", error);
+        //console.error("\n\n\nError: ", error);
         failureCount++;
 
         if (failureCount >= maxConsecutiveErrorsAllowed) {
