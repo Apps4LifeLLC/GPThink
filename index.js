@@ -162,6 +162,8 @@ async function recursivePrompt(primaryObjective) {
 
         if (failureCount >= maxConsecutiveErrorsAllowed) {
           console.log("API limit reached.");
+          success = true;//lazy approach to get the final transcript to log anyways, can clean up later
+          thoughts = maxThoughts;//lazy approach to get the final transcript to log anyways, can clean up later
           break;
         }
 
@@ -174,7 +176,7 @@ async function recursivePrompt(primaryObjective) {
         await promptAndReply();
       } else {
         console.clear()
-        console.log(`Max thoughts reached.\n\n\n\nPrimary Objective:\n\nUser: ${primaryObjective}\n\n\n\nTranscript of AI's thoughts:\n\nAI: ${thoughtChain.join('\n\nAI: ')}\n\n\n\nIf you like GPThink, please follow its creator on Twitter @Valuable or on Instagram @Albert\n\n\n\n`);
+        console.log(`Limit reached.\n\n\n\nPrimary Objective:\n\nUser: ${primaryObjective}\n\n\n\nTranscript of AI's thoughts:\n\nAI: ${thoughtChain.join('\n\nAI: ')}\n\n\n\nIf you like GPThink, please follow its creator on Twitter @Valuable or on Instagram @Albert\n\n\n\n`);
       }
     }
 
