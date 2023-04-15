@@ -17,8 +17,8 @@ const fs = require('fs');
 const API_KEY = "";//Your openAI API key here (alternatively this can be set, securely, in a .env file under 'API_KEY=______')
 const gptModel = "gpt-3.5-turbo";
 
-const maxThoughts = 100;
-const thoughtRateLimit = 1.5;//seconds
+const maxThoughts = 99;
+const thoughtRateLimit = 2.0;//seconds
 const errorRetryDelay = 4.0;//seconds
 const maxConsecutiveErrorsAllowed = 8;
 
