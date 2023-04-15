@@ -18,9 +18,9 @@ const API_KEY = "";//Your openAI API key here (alternatively this can be set, se
 const gptModel = "gpt-3.5-turbo";
 
 const maxThoughts = 100;
-const thoughtRateLimit = 1;//seconds
-const errorRetryDelay = 10;//seconds
-const maxConsecutiveErrorsAllowed = 10;
+const thoughtRateLimit = 1.5;//seconds
+const errorRetryDelay = 4.0;//seconds
+const maxConsecutiveErrorsAllowed = 8;
 
 //Follow me on Twitter @Valuable or Instagram @Albert
 
@@ -53,7 +53,7 @@ if (!apiKey) {
 }
 
 const timeoutPromise = (ms) =>
-  new Promise((resolve, reject) => setTimeout(() => reject(`Timed out after ${ms} ms`), ms));
+  new Promise((resolve, reject) => setTimeout(() => reject(`API Timed out`), ms));
 
 async function promptGPT(prompt, model = "gpt-3.5-turbo", max_tokens = 2500, timeout = 10000) {
   try {
@@ -101,11 +101,11 @@ function extractJSON(text) {
 }
 
 function questionPrompt(primaryObjective, summary, message) {
-  return `I want to act out a scene with you. You and I are playing the part of advanced intellectuals. I am a very curious and inquisitive intellectual who is also very good at noticing patterns. You are a well versed intellectual with a near infinite knowledge on any topic. Though we are acting, I do want us to stay objective and realistic, don't make up non-sense. Everything we say should be truthful and also logically sound. In this scene we are going to start in the middle of a conversation we have already been having. To help with this I will provide a summary of what we have discussed so far, as well as our primary objective in this conversation.\nSummary:\n${"```"}${summary}${"```"}\nPrimary Objective:\n${"```"}${primaryObjective}${"```"}\nI will now continue the conversation with the following inquiry: ${"```"}${message}${"```"}. Before you reply, I want you to first re-summarize the entire conversation up until now, including my new inquiry. The summary should include lots of details so that a stranger could pick up the conversation where we left off, just from reading the summary. My inquiry must be included in the summary as the final sentence. The summary should be succinct, and under 1500 characters in length. Once you have a response in mind, make sure to express it in a succinct way which is under 200 characters in length. Your response shouldn't reference you or me or us, phrase everything as if you were simply thinking internally, talking to yourself. I want you to reply in JSON. The new summary should be stored under a key 'summary', whereas your response should be under a key 'message'. Please keep the primary objective in mind, your response should aim to get us one step closer towards our primary objective. If you believe we have achieved our primary objective, please make your response in the 'message' key equal to "we have achieved our primary objective"`;
+  return `I want to act out a scene with you. You and I are playing the part of advanced intellectuals. I am a very curious and inquisitive intellectual who is also very good at noticing patterns. You are a well versed intellectual with a near infinite knowledge on any topic. Though we are acting, I do want us to stay objective and realistic, don't make up non-sense. Everything we say should be truthful and also logically sound. In this scene we are going to start in the middle of a conversation we have already been having. To help with this I will provide a summary of what we have discussed so far, as well as our primary objective in this conversation.\nSummary:\n${"```"}${summary}${"```"}\nPrimary Objective:\n${"```"}${primaryObjective}${"```"}\nI will now continue the conversation with the following inquiry: ${"```"}${message}${"```"}. Before you reply, I want you to first re-summarize the entire conversation up until now, including my new inquiry. The summary should include lots of details so that a stranger could pick up the conversation where we left off, just from reading the summary. My inquiry must be included in the summary as the final sentence. The summary should be detailed but under 2500 characters in length. Once you have a response in mind, make sure to express it in a detailed way which is under 400 characters in length. Your response shouldn't reference you or me or us, phrase everything as if you were simply thinking internally, talking to yourself. I want you to reply in JSON. The new summary should be stored under a key 'summary', whereas your response should be under a key 'message'. Please keep the primary objective in mind, your response should aim to get us one step closer towards our primary objective. If you believe we have achieved our primary objective, please make your response in the 'message' key equal to "we have achieved our primary objective"`;
 }
 
 function answerPrompt(primaryObjective, summary, message) {
-  return `I want to act out a scene with you. You and I are playing the part of advanced intellectuals. You are a very curious and inquisitive intellectual who is also very good at noticing patterns. I am a well versed intellectual with a near infinite knowledge on any topic. Though we are acting, I do want us to stay objective and realistic, don't make up non-sense. Everything we say should be truthful and also logically sound. In this scene we are going to start in the middle of a conversation we have already been having. To help with this I will provide a summary of what we have discussed so far, as well as our primary objective in this conversation.\nSummary:\n${"```"}${summary}${"```"}\nPrimary Objective:\n${"```"}${primaryObjective}${"```"}\nI will now continue the conversation with the following response: ${"```"}${message}${"```"}. Before you reply, I want you to first re-summarize the entire conversation up until now, including my new response. The summary should include lots of details so that a stranger could pick up the conversation where we left off, just from reading the summary. My response must be included in the summary as the final sentence. The summary should be succinct, and under 1500 characters in length. Once you have a follow up question in mind, make sure to express it in a succinct way which is under 200 characters in length. Your follow up question shouldn't reference you or me or us, phrase everything as if you were simply thinking internally, talking to yourself. I want you to reply in JSON. The new summary should be stored under a key 'summary', whereas your follow up question should be under a key 'message'. Please keep the primary objective in mind, your follow up questions should aim to get us one step closer towards our primary objective. If you believe we have achieved our primary objective, please make your response in the 'message' key equal to "we have achieved our primary objective"`;
+  return `I want to act out a scene with you. You and I are playing the part of advanced intellectuals. You are a very curious and inquisitive intellectual who is also very good at noticing patterns. I am a well versed intellectual with a near infinite knowledge on any topic. Though we are acting, I do want us to stay objective and realistic, don't make up non-sense. Everything we say should be truthful and also logically sound. In this scene we are going to start in the middle of a conversation we have already been having. To help with this I will provide a summary of what we have discussed so far, as well as our primary objective in this conversation.\nSummary:\n${"```"}${summary}${"```"}\nPrimary Objective:\n${"```"}${primaryObjective}${"```"}\nI will now continue the conversation with the following response: ${"```"}${message}${"```"}. Before you reply, I want you to first re-summarize the entire conversation up until now, including my new response. The summary should include lots of details so that a stranger could pick up the conversation where we left off, just from reading the summary. My response must be included in the summary as the final sentence. The summary should be detailed but under 2500 characters in length. Once you have a follow up question in mind, make sure to express it in a detailed way which is under 400 characters in length. Your follow up question shouldn't reference you or me or us, phrase everything as if you were simply thinking internally, talking to yourself. I want you to reply in JSON. The new summary should be stored under a key 'summary', whereas your follow up question should be under a key 'message'. Please keep the primary objective in mind, your follow up questions should aim to get us one step closer towards our primary objective. If you believe we have achieved our primary objective, please make your response in the 'message' key equal to "we have achieved our primary objective"`;
 }
 
 const setTimeoutPromise = util.promisify(setTimeout);
@@ -148,7 +148,8 @@ async function recursivePrompt(primaryObjective) {
           thoughtChain.push(message);
 
           console.clear()
-          console.log(`Current Thought (${thoughts} of ${maxThoughts}): ${message}\n\n\nSummary of Thoughts: ${summary}\n\n\n\nIf you're enjoying this, please follow the creator of GPThink:\n• Twitter: @Valuable\n• Instagram: @Albert`);
+          //console.log(`Current Thought (${thoughts} of ${maxThoughts}): ${message}\n\n\nSummary of Thoughts: ${summary}\n\n\n\nIf you're enjoying this, please follow the creator of GPThink:\n• Twitter: @Valuable\n• Instagram: @Albert`);
+          console.log(`\n\nCurrent Thought (${thoughts} of ${maxThoughts}): ${message}\n\n\n\n\n\nIf you're enjoying this, please follow the creator of GPThink:\n• Twitter: @Valuable\n• Instagram: @Albert`);
 
           if (role === "question") {
             role = "answer";
@@ -167,8 +168,8 @@ async function recursivePrompt(primaryObjective) {
           throw new Error('message or summary missing or invalid in JSON');
         }
       } catch (error) {
-        console.log(`Error, trying again in ${errorRetryDelay} seconds`);
-        console.error("\n\n\nError: ", error);
+        console.log(`\n\n\nError, trying again in ${errorRetryDelay} seconds`);
+        //console.error("\n\n\nError: ", error);
         failureCount++;
 
         if (failureCount >= maxConsecutiveErrorsAllowed) {
