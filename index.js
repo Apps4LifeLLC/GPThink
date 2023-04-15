@@ -173,7 +173,10 @@ async function recursivePrompt(primaryObjective) {
         failureCount++;
 
         if (failureCount >= maxConsecutiveErrorsAllowed) {
-          console.log("API limit reached.");
+          console.log("API limit reached. Final transcript of thoughts will be displayed in 5 seconds.");
+          await setTimeoutPromise(5*1000);
+          success = true;//lazy approach to get the final transcript to log anyways, can clean up later
+          thoughts = maxThoughts+1;//lazy approach to get the final transcript to log anyways, can clean up later
           break;
         }
 
