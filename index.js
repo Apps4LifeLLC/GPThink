@@ -93,7 +93,7 @@ function extractJSON(text) {
   try {
       jsonObject = JSON.parse(jsonString);
   } catch (error) {
-      console.log(`JSON parse error: ${error}`);
+      //console.log(`JSON parse error: ${error}`);
       return null;
   }
 
