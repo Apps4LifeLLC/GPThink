@@ -55,7 +55,7 @@ if (!apiKey) {
 const timeoutPromise = (ms) =>
   new Promise((resolve, reject) => setTimeout(() => reject(`API Timed out`), ms));
 
-async function promptGPT(prompt, model = "gpt-3.5-turbo", max_tokens = 2500, timeout = 15000) {
+async function promptGPT(prompt, model = "gpt-3.5-turbo", max_tokens = 2500, timeout = 30000) {
   try {
     const configuration = new Configuration({
       apiKey: apiKey,
